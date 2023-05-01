@@ -1,0 +1,240 @@
+[Config]
+Relative path=1
+Compilator.SaveAll=0
+Compilator.Capture=0
+Compilator.HideOutput=0
+Compilator.LogType=0
+DefaultCPIndex=0
+LogtoEnd=1
+DontOpen=0
+FileFormat=1
+[Project tree]
+savvygloom
+	+savvygloom
+		c4.c
+		c4.h
+		depot.c
+		g_account.c
+		g_breakin.c
+		g_chase.c
+		g_class.c
+		g_class.h
+		G_cmds.c
+		G_combat.c
+		g_func.c
+		g_items.c
+		g_local.h
+		g_log.c
+		g_log.h
+		G_main.c
+		g_map.c
+		g_map.h
+		g_misc.c
+		g_monster.c
+		g_phys.c
+		g_save.c
+		g_spawn.c
+		g_svcmds.c
+		g_target.c
+		g_trigger.c
+		g_turret.c
+		g_utils.c
+		G_weapon.c
+		g_wordfilter.c
+		g_wordfilter.h
+		game.h
+		gpl.txt
+		Grapple.c
+		lmine.c
+		lmine.h
+		m_breeder.c
+		m_breeder.h
+		M_cocoon.c
+		m_cocoon.h
+		m_detector.c
+		m_drone.c
+		m_drone.h
+		m_engineer.h
+		m_exterm.h
+		M_gasser.c
+		m_guardian.c
+		m_guardian.h
+		m_hatchling.c
+		m_hatchling.h
+		M_healer.c
+		m_healer.h
+		m_hsold.h
+		m_mech.h
+		m_obstacle.c
+		m_obstacle.h
+		m_player.h
+		m_rider.h
+		M_spike.c
+		m_spiker.h
+		m_stalker.c
+		m_stalker.h
+		m_sting.c
+		m_stinger.h
+		m_wraith.c
+		m_wraith.h
+		Makefile
+		mersennetwister.c
+		menus.h
+		p_biotech.c
+		P_client.c
+		p_commando.c
+		p_engineer.c
+		p_exterm.c
+		p_grunt.c
+		p_heavy.c
+		p_hud.c
+		p_mech.c
+		p_menu.c
+		p_menu.h
+		p_shotgun.c
+		P_view.c
+		P_weapon.c
+		q_shared.c
+		q_shared.h
+		turret.c
+		turret.h
+		balance.h
+[Open project files]
+0=balance.h
+1=game.h
+2=q_shared.h
+3=q_shared.c
+4=g_local.h
+5=g_breakin.c
+6=G_main.c
+7=g_items.c
+8=G_combat.c
+9=M_spike.c
+10=m_obstacle.c
+11=M_healer.c
+12=depot.c
+13=P_weapon.c
+14=G_weapon.c
+15=P_client.c
+16=G_cmds.c
+17=c4.c
+18=g_utils.c
+19=g_class.c
+20=g_misc.c
+21=spbot.c
+22=P_view.c
+23=menus.h
+24=p_menu.h
+25=p_shotgun.c
+26=p_hud.c
+27=g_save.c
+28=g_spawn.c
+29=g_wordfilter.c
+30=p_exterm.c
+31=g_svcmds.c
+32=m_drone.c
+[Selected Project Files]
+Main=
+Selected=g_spawn.c
+[balance.h]
+TopLine=506
+Caret=1,525
+[game.h]
+TopLine=1
+Caret=1,1
+[q_shared.h]
+TopLine=1
+Caret=1,1
+[q_shared.c]
+TopLine=1
+Caret=1,1
+[g_local.h]
+TopLine=1
+Caret=1,1
+[g_breakin.c]
+TopLine=1340
+Caret=29,1378
+[G_main.c]
+TopLine=14
+Caret=1,39
+[g_items.c]
+TopLine=2020
+Caret=56,2055
+[G_combat.c]
+TopLine=1145
+Caret=17,1163
+[M_spike.c]
+TopLine=228
+Caret=1,250
+[m_obstacle.c]
+TopLine=266
+Caret=98,307
+[M_healer.c]
+TopLine=356
+Caret=1,357
+[depot.c]
+TopLine=1
+Caret=1,39
+[P_weapon.c]
+TopLine=359
+Caret=1,374
+BookMark0=1,980
+[G_weapon.c]
+TopLine=633
+Caret=54,660
+BookMark0=1,2572
+[P_client.c]
+TopLine=456
+Caret=34,474
+BookMark0=1,1668
+[G_cmds.c]
+TopLine=4925
+Caret=17,4965
+[c4.c]
+TopLine=239
+Caret=6,276
+[g_utils.c]
+TopLine=41
+Caret=25,41
+[g_class.c]
+TopLine=1
+Caret=1,1
+[g_misc.c]
+TopLine=1
+Caret=1,1
+[spbot.c]
+TopLine=13
+Caret=1,51
+[P_view.c]
+TopLine=938
+Caret=1,978
+[menus.h]
+TopLine=364
+Caret=1,396
+[p_menu.h]
+TopLine=24
+Caret=1,65
+[p_shotgun.c]
+TopLine=36
+Caret=55,36
+[p_hud.c]
+TopLine=1
+Caret=1,1
+[g_save.c]
+TopLine=182
+Caret=20,205
+[g_spawn.c]
+TopLine=1
+Caret=1,1
+[g_wordfilter.c]
+TopLine=1
+Caret=1,1
+[p_exterm.c]
+TopLine=12
+Caret=1,37
+[g_svcmds.c]
+TopLine=245
+Caret=1,1
+[m_drone.c]
+TopLine=6
+Caret=15,33

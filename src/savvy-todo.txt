@@ -1,0 +1,271 @@
+---
+This is a list of flaws discovered by people - Savvy
+---
+~lorp
+'vote' command - 'abort' does not show in syntax/help msg
+>resolved in g_cmds.c, Cmd_vote_f()
+~lorp
+C4 arming does not cause 'respawn' command from working
+>resolved in c4.c C4_Arm()
+~savvy
+currently in grim's gloom and normal r1 dlls: drone is completely nerfed, sts shouldn't have resistance to fire, gas is understandable with gas mask, but NO FUCKING FIRE PROTECTION; stingers require more health, better slash, better autoslash, and better fire; c4 needs to be fixed to STOP at walls, eg. objects instead of crazy arsed effects that go through walls; grenade power needs reduction on classes, slightly less on spikers; spikers suck with all settings, humans can always get by 'em; mg turrets and turrets are too fucking fast reacting for SMALL aliens for aliens to ever get to the campers, LARGE aliens should get shot at more, as they are a 'bigger threat' to the turrets (check bbox sizes and prioritize?)
+>
+~savvy
+alien slash does NOT work anymore, it's like you can't hit shit; maybe this is ping-based? make slash prediction, eg. find ents within a radius IN FRONT OF the alien, and slash towards in, maybe a 4 sided pyramid with the top cut off for prediction zone in front of alien (4 lines using opposite "slopes" ?)
+~savvy / tachikoma / edo / zorg
+maplist flaw; repeats maps almost every other map sometimes
+>grim gloom only i think
+~savvy
+target_healer and target_repair_bay, whatever it is... does not work for upgrades
+>tried to resolve, can upgrade anywhere atm for some odd reason
+~bloodsucker
+upgraded kami corpses do not spew spikes
+>fix via upgrade check? (is client cleared and corpse generated on death???)
+~savvy | DONE - resolved i hope, MAKE SURE TO UPDATE WEAPON INDEXES NEXT TIME
++ for some odd reason, once (only once), i made my (commando? (might be xt, first proxy mine build)) throw grenades etc, do stuff... went to get more
+and GOT SPIKE SPORES INSTEAD OF FRAG GRENADES - SAME NUMBER OF GRENADES
++ cannot use medpacks under most circumstances
++ stalker cannot use spike spores??
+possible solution: the addition of the proxy mine fucked the precache indexes up (for ITEM_INDEX and FindItem())
+>was the precache indexes alright, fixed by moving to bottom and adding cache indexes (even if not used) for mines
+~savvy
+longer slash ranges, current ones SUCK
+~savvy
+hatchling and drone jumps are always going right over humans, unless you decide to slow yourself in mid air or jump too earily...
+entity gravity override float value would work very nicely
+
+---
+this is a list of ideas to add / consider
+---
+~savvy
+drone Mucus Glands upgrade adds to maximum spit total - 8 or 10
+~savvy | DONE
+enhanced damage for hatchling upgrade should also increase max_health and add difference between normal hp and new max health (int oldmax = ent->s.max_health; ent->s.max_health *= 2; ent->s.health += (ent->s.max_health - oldmax);)
+~savvy
+split vote mutes to the following: teammute (team mute, cannot use teamchat), publicmute (public chat mute, cannot use public chat), votemute (cannot start votes, but can vote), globalmute (cannot do any (this is old mute))
+~savvy
+wraith upgrade for 2-4 frags for spike bomb dropping, eg. spike shower (+use), upgrades from ACID TO SPIKE SHOWER, so that you cannot use acid anymore, ramp shots up like grim's thing, but like 5 max per ramp, and pretty fast at it
+wraith upgrade for 1 frag for healing teammates/structures with spit
+~edo | DONE
+increase wraith spit
+1) range
+2) velocity (speed)
+(dll ref: 2004-1-1)
+~savvy
+breeder single poke can heal alien structures; called "healing touch" or "evolution acceleration" :)
+~savvy
+guided rockets from holding +use as ht?
+basically an ht holds +use for x number of server frames / length of time
+player becomes flying without speed control (+forward), at rocket speed, view points updated
+old ent is cleared of client data and used as a death point, if killed feeds and explodes the rocket wherever it is, bringing view back to ht
+if player survives for rocket timer, returns to previous ent copying old information back
+> a new ent is formed at player's s.origin, which looks exactly like them. their model is changed and they lose control of all velocity (no strafing rockets), build timer becomes rocket live time, touch function = explosion, explosion = control restored, player moved back to old origins and the other ent is removed
+~savvy
+stalker can use +use bind to eat corpses that had armor:
+ * 25% of original armor for class IF 10 or under armor
+ * all armor if 10-50 armor was left, so that hts/grunts/sts/bios give all their armor, while mech doesn't give over max
+~savvy
+related to eating corpses, can eat gibs:
+GIB_METALIC = armor
+GIB_ORGANIC = health
+therfore, mechs and xts give armor, rest give health?
+>>>problem: other objects also might do "gibs", such as a misc_explobox exploding
+~bloodsucker
+for stalker or guardian, if mech/xt corpse is +use'd, then add spores / make more deadly if full
+~savvy / bloodsucker
+savvy:       spike spores do radius damage / larger radius with some particle effects and randomized spikes at any angle
+bloodsucker: the explosion of the spike nade can explode frags, and frags spike nades
+~bloodsucker
+hatchling corpses / hatchies should have: damage = (velocity + mindamage);
+MOD_DEADBUG = "<name> got a dead bug on their head"
+~bloodsucker
+turrets cannot shoot any alien if it behind an entity
+~bloodsucker
+increase health upgrade range
+~savvy
+MAKE SERVER ADMIN BE ABLE TO SET HIS/HER OWN VALUES FOR MOST DAMAGES, AMMO, AND GRENADES
+~savvy close combat weapons
+grunts:          knives - is side weapon
+biotechs:        close range biogenetic spray (pepper spray) - is side weapon, can throw it away and use fists
+shock trooopers: machete - is side weapon
+heavy toopers:   mace / club - is side weapon
+commandos:       sword - is side weapon
+mechs:           stubby arms, do massive damage, used when out of ammo only
+~savvy
+if all eggs & healers or teleporters & depots are gone, then aliens or humans get the ability to upgrade anywhere
+this would let people upgrade during sudden death as well
+~savvy
+mechs should be able to ramp their mechrocket power up, 1 by 1, this way they can control how many shots can be fired
+grim's gloom takes 10 ammo per rocket out of mech's stash, problem with that is validation for the ramping, if you have enough left
+also if you DO ramp it up, but LEAVE the ammo there while you control how many you are gonna toss out, then do you have the ability to shoot all your ammo twice, by getting many rockets ramped up while shooting your ammo away?
+~savvy / kabelsax
+wallwalking:
+hatchlings get it by default - +use
+breeders need a 1 frag upgrade for it: "Spikey Claws" - +use
+grunts need 2 frag upgrade for it: "Gravity Boots" - +use
+engineers need a 1 frag upgrade for it: "Artificial Gravity" +use
+any other class uses +use bind already, except perhaps hts, but who wants wallwalking hts?
+~ability to walk through alien structures as alien
+good idea: no blocking by alien structures for aliens
+bad idea: spikers could shoot aliens from inside, gasser gass would spawn inside aliens, aliens could no longer use obs stairs etc
+~bloodsucker / savvy
+bloodsucker: drone can "float", eg. jump starts grav ramping
+        _-
+      _-   \ <-- going this way
+savvy:       drone can jump, have grav it does now, only travel faster, this way can still get up high, and even faster, and land quickly behind humans
+             drone can jump using +moveup, but -moveup causes grav to be higher (faster drop) than normal grav
+             drones in this way can attack by jumping over humans and releasing keys
+
+~bloodsucker
+guardian can do a "power lunge", it can basically crouch and fly forwards, ramp it longer held, place a cap though
+~bloodsucker / savvy
+stinger can press a key, and use a more enhanced damage or poisen attack
+key possibilities: inventory, 'use special' command, etc
+~bloodsucker / savvy
+bloodsucker: stinger can have a special attack once per heal, eg. gets a special slash dmg once each time it heals from damage
+savvy:       25% velocity reduction on whomever gets hit, if anyone, and 50% grav increase (HEAVIER)
+~savvy
+most aliens jump too high, it is impossible to attack when you overshoot humans all the time
+the downside to increasing gravity is that you can't jump as high (DUH), so can't get to high spots easily
+~a number of people, edo was one... some other people before i read edo's post on pg forums have suggested it
+breeder (maybe upgraded) can pick up structures and move them
+savvy: maybe it 'eats' it, so on death or same button/cmd can drop it, this can be interesting, having breeders eat spikers and running into human base. BEWARE OF EGGS - DISABLE WHILE IN MOTION? DISABLE CARRYING COMPLETELY?
+~weston
+hatchlings (upgrade) can resist exterminator laser <-- problems: 1-2 frag upgrade for 20 hp class...
+~savvy
+why do humans have medpacks while aliens do not?
+idea: "biopacks" (use health works same with them, eg. it checks for health and determines correct one) for aliens
+idea: humans cannot have or use medpacks, but medistation (like tremulous) can be @ base, or healer or something...
+~savvy | SORT OF DONE
+biotech upgrade "Battletech Pack"
+gives more grenades
+some more armor
+a new grenade for the inventory which is a shrapbomb grenade (shoots some close-range shrap)
+~savvy
+grunt upgrade "Infared Scope"
+give grunts infared vision of bought, via RDF_IRGOGGLES or whatever it is
+~BuFFy
+bouncing stalkers, like constant +moveup
+~BuFFY | DONE
+xts get claymores / bouncing bettys or something, some sort of land mine, instead of nades
+~Kela
+kamikaze breeders - need 10 frags for the upgrade, godmode for 20 seconds, when used, and the breeder explodes like 2 c4s
+~savvy
+shrapnel grenades - movetype_bounce, high grav though, so it resolves quickly, same model as flash nade
+~savvy
+kamis can shed their skin on first +use, second +use explodes them, so 1 right after the other results in double explosion
+edit: leaves their armor behind as well
+~savvy
+tripwires do not detect more than 1 ent (no more for (;;) loop within mine.c's think function)
+this way it stops at first ent, being more realistic
+result: a mech can allow aliens past by standing in way of mine, engis can now get hit by aliens while mine jumping, without exploding mines
+~inuyasha / savvy
+inu:	custom crosshair for mechrockets, so that you can see where they will go
+Savvy:	how about instead, a bunch of temp ent sparks that show where they will end up, each time a mechrocket is added, so spark, wait, spark, wait, release->fire
+~savvy
+make spikers shoot back when damaged, depending on if they are ready or not (this way, attackers can't kill it from across level without something happening)
+~savvy
+when hatchlings die with the "suicide spike" upgrade, or some other cool name, drops a spike spore
+when grunts die with the martyrdom upgrade, they drop a frag grenade
+~savvy / tachikoma
+when an observer sends a special command, maybe hijack reload, they can see other observers and point at stuff using attack button
+the observer then gets a TE_SPARK or something like that, where the sparks are randomly colored, at their origin point
+the observer can see other observers in such a mode, along with their pointers (if they are using it)
+~savvy
+make an admin list for mutes, @addmute and @delmute
+~savvy
+human "teslas", you construct 1, then another, and so forth, A LIMIT ON HOW MANY
+they should be able to target each other, to create electrical beams, in order of construction, or "links"
+maybe their own edict_t *teslas; somewhere?
+~savvy
+alien "hives", hurts humans that get too close
+~KeVVa / savvy
+KeVVa: flying human class, as in like original flying quake2 classes
+Savvy: bring back old grenade launcher class with a jetpack that can stay in air like in tremulous, and make sure that it can be brought down with damage
+~savvy
+humans' upwards and sideways velocities slow the closer they get to obstacles
+~savvy
+aliens and humans have a number of "upgrade" points that they can use
+these new points can upgrade existing structures to be better, such as faster turrets, etc.
+~savvy
+"Inferno" - stinger fire upgrade
+"Explosive Shell Pack" - shock trooper upgrade for reloading ex shells
+~savvy / donut
+spider web buildings for aliens, slows humans
+~donut
+breeders can cocoon / infest opponents
+
+
+
+---
+class concepts - place all new classes that are being made, all of their files, into a new .pak file
+---
+~savvy
+healing alien class
+~savvy
+"Flamer" - human class with flame thrower - red fire, stingers become blue because they are "hotter"
+~bloodsucker / savvy
+bloodsucker: edit to "Flamer" - make cold trooper ("Sub-Zero"), is blue fire for cold to hurt aliens, while fire hurts humans
+savvy:       slow aliens hit by fire 10% per hit - NOT DRONE SPIT, ONLY SLOW VELOCITY, NO SPEED DECREASE (like hitting a wall in your face)
+~savvy / bloodsucker
+savvy:       "Spikder" - a small alien that can fire spikes, +use discharges all spikes, if spikes hit teammates, teammates gain health for dmg value
+bloodsucker: make proxy heal, like mobile healer, spikes give armor instead; spikes increase melee damage
+bloodsucker:  <Bloodsucker> where bio=life || <Bloodsucker> mana=magic || <Bloodsucker> mangler?
+
+
+---
+Sudden Death Ideas - place ideas for sd here
+---
+~savvy
+can upgrade during sd without healers / depots (maybe only 1 upgrade per person after sd start? <-- maybe a cvar or all upgrades as normal because people deserve to use their earned frags?)
+~savvy
+depots and healers do not die during sd start, allowed after sd start as normal
+~savvy
+healer / depot timers are reset at start of sd, for fast refreshes, then doubled for rest of sd after each use
+~bloodsucker
+everyone gets items + health + armor at start of sd, and healers / depots die as normal
+~bloodsucker / savvy
+bloodsucker:
+% of hp + armor decreased over a set amount of time during SD without kills:
+1% / 1 second
+10% / 5 seconds
+etc., until a kill or death
+savvy:
+movement based, use player trails to find campers
+time based off of being hurt / hurting someone, use current health, not maximum health, so remains proportional
+~savvy
+idea: both humans and aliens run out of ammo (grenades and all, except for medpacks), so they must get up close and personal with their close combat weapons
+edit: MAKE SURE DEPOTS AND HEALERS DO NOT RESTORE INVENTORY, ONLY MEDPACKS / HEALTH / ARMOR
+      STINGER FIRE MUST NOT WORK, NOR XT GUN (both regen over time)
+      WRAITH AND DRONE ACID / SPIT MUST NOT WORK (both regen over time)
+      etc
+~bloodsucker
+breeder vs engi 1 hit kills
+
+---
+Gloom Changes
+---
+
+ ~~~ Gameplay aspects
+[+] grunt guns not completely accurate
+[+] 15 stinger fire with constant regen (except when using it)
+[+] mech doomsday drops c4 instead of instagib attackers that finally take the fucker down
+[ ] hatchling bounding boxes smaller
+[ ] heavy trooper rocket launcher has no beep, but a constant particle effect marks the end of a 'laser' sight
+[ ] commando clip size decreased to be the same as grunt
+[ ] limited jetpack for exterminator, no more megajumps and power shield coverage
+[ ] slower regeneration for exterminator cells
+[+] class-based gravity system (already implemented i think, due to varying commando, drone, mech, stinger, and stalker jumps)
+[+] drone spit affects exterminators with power shield enabled - via #defined option, to disable it
+
+ ~~~ Classes (from Savvy only)
+ ~ humans
+[ ] 1 frag  - human flight class (Fly Boy)           - constant flight like wraith, and can also be taken down by damage, has a knife that works using a specialized human melee attack and a new handgun with red sparks on miss
+[ ] 2 frags - human impact grenade class (Grenadier) - can fire impact grenades that cannot kill an egg easily. can also give out 1 grenade to a fellow human
+[ ]   frag  -                                        - 
+ ~ aliens
+[ ] 1 frag  - alien healing class (Slimer)           - can heal aliens, and has a long slash range with special slime spit which hurts
+[ ] 2 frags - alien spiker class (Needler)           - fires fast harmful spikes which regenerate
+[ ]   frag  -                                        - 
+
+
